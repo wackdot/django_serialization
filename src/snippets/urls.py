@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.urls import include, re_path
 from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 from snippets.views import SnippetViewSet, UserViewSet
@@ -15,8 +15,7 @@ router.register(r'users', views.UserViewSet)
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
-    url(r'^', include(router.urls)),
-    url(r'^schema/$', schema_view),
+    re_path(r'^', include(router.urls)),
 ]
 
 # Binding ViewSets to URLs explicitly
